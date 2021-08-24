@@ -12,9 +12,10 @@ do
         LINES=$(find $FOLDER -type f -name '*.mbtiles' -mmin -1 | wc -l)
         if (( $LINES > 0 )); then
             printf '%s - Mbtile updated, sending -HUP kill\n' "$(date)"
+            sleep 10
             kill -HUP $(pgrep mbtileserver)
             LAST_RUN=$(date)
         fi
     fi
-  sleep 5
+  sleep 30
 done
