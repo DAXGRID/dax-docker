@@ -11,19 +11,35 @@ wget ftp://$kortforsyning_user:$kortforsyning_password@ftp.kortforsyningen.dk//g
 unzip -j "./tmp/veje.zip" "vejmidte_navn.gpkg" -d "./tmp/veje"
 ogr2ogr -f GeoJSON -sql "SELECT geometri, 'vejmidte' as objecttype, vejnavn FROM vejmidte_navn" -append -t_srs crs:84 ./tmp/danish-basemap.geojson ./tmp/veje/vejmidte_navn.gpkg -nln danish-basemap
 
-# Get Vejkant & Helle
-wget ftp://$kortforsyning_user:$kortforsyning_password@ftp.kortforsyningen.dk//grundlaeggende_landkortdata/fot/MAPINFO/DK_MAPINFO_UTM32-EUREF89.zip -O ./tmp/fot.zip
-unzip -j "./tmp/fot.zip" "DK_MAPINFO_UTM32-EUREF89/FOT/TRAFIK/VEJKANT.*" -d "./tmp/fot"
-unzip -j "./tmp/fot.zip" "DK_MAPINFO_UTM32-EUREF89/FOT/TRAFIK/HELLE.*" -d "./tmp/fot"
-ogr2ogr -f GeoJSON -sql "SELECT 'vejkant' as objecttype FROM vejkant" -append -t_srs crs:84 ./tmp/danish-basemap.geojson ./tmp/fot/VEJKANT.tab -nln danish-basemap
-ogr2ogr -f GeoJSON -sql "SELECT 'helle' as objecttype FROM helle" -append -t_srs crs:84 ./tmp/danish-basemap.geojson ./tmp/fot/HELLE.tab -nln danish-basemap
-
-# Get Skel
+# Skel
 wget ftp://$kortforsyning_user:$kortforsyning_password@ftp.kortforsyningen.dk//matrikeldata/matrikelkort/MAPINFO/DK_MAPINFO_UTM32-EUREF89.zip -O ./tmp/matrikel.zip
 unzip -j "./tmp/matrikel.zip" "DK_MAPINFO_UTM32-EUREF89/MINIMAKS/BASIS/SKEL.*" -d "./tmp/matrikel"
 ogr2ogr -f GeoJSON -sql "SELECT 'skel' as objecttype FROM skel" -append -t_srs crs:84 ./tmp/danish-basemap.geojson ./tmp/matrikel/SKEL.tab -nln danish-basemap
 
-# Create mbtiles
+# Get data for Vejkant & Helle & Nedloebsrist & Broenddaeksel & Lysmast
+wget ftp://$kortforsyning_user:$kortforsyning_password@ftp.kortforsyningen.dk//grundlaeggende_landkortdata/fot/MAPINFO/DK_MAPINFO_UTM32-EUREF89.zip -O ./tmp/fot.zip
+
+# # Vejkant
+unzip -j "./tmp/fot.zip" "DK_MAPINFO_UTM32-EUREF89/FOT/TRAFIK/VEJKANT.*" -d "./tmp/fot"
+ogr2ogr -f GeoJSON -sql "SELECT 'vejkant' as objecttype FROM vejkant" -append -t_srs crs:84 ./tmp/danish-basemap.geojson ./tmp/fot/VEJKANT.tab -nln danish-basemap
+
+# # Helle
+unzip -j "./tmp/fot.zip" "DK_MAPINFO_UTM32-EUREF89/FOT/TRAFIK/HELLE.*" -d "./tmp/fot"
+ogr2ogr -f GeoJSON -sql "SELECT 'helle' as objecttype FROM helle" -append -t_srs crs:84 ./tmp/danish-basemap.geojson ./tmp/fot/HELLE.tab -nln danish-basemap
+
+# Nedloebsrist
+unzip -j "./tmp/fot.zip" "DK_MAPINFO_UTM32-EUREF89/FOT/TEKNIK/NEDLOEBSRIST.*" -d "./tmp/fot"
+ogr2ogr -f GeoJSON -sql "SELECT 'nedloebsrist' as objecttype FROM nedloebsrist" -append -t_srs crs:84 ./tmp/danish-basemap.geojson ./tmp/fot/NEDLOEBSRIST.tab -nln danish-basemap
+
+# Broenddaeksel
+unzip -j "./tmp/fot.zip" "DK_MAPINFO_UTM32-EUREF89/FOT/TEKNIK/BROENDDAEKSEL.*" -d "./tmp/fot"
+ogr2ogr -f GeoJSON -sql "SELECT 'broenddaeksel' as objecttype FROM broenddaeksel" -append -t_srs crs:84 ./tmp/danish-basemap.geojson ./tmp/fot/BROENDDAEKSEL.tab -nln danish-basemap
+
+# Lysmast
+unzip -j "./tmp/fot.zip" "DK_MAPINFO_UTM32-EUREF89/FOT/TEKNIK/MAST.*" -d "./tmp/fot"
+ogr2ogr -f GeoJSON -sql "SELECT 'mast' as objecttype FROM mast" -append -t_srs crs:84 ./tmp/danish-basemap.geojson ./tmp/fot/MAST.tab -nln danish-basemap
+
+Create mbtiles
 docker run -it --rm \
   -v $(pwd)/tmp:/data \
   openftth/tippecanoe:latest \
