@@ -39,7 +39,7 @@ ogr2ogr -f GeoJSON -sql "SELECT 'broenddaeksel' as objecttype FROM broenddaeksel
 unzip -j "./tmp/fot.zip" "DK_MAPINFO_UTM32-EUREF89/FOT/TEKNIK/MAST.*" -d "./tmp/fot"
 ogr2ogr -f GeoJSON -sql "SELECT 'mast' as objecttype FROM mast" -append -t_srs crs:84 ./tmp/danish-basemap.geojson ./tmp/fot/MAST.tab -nln danish-basemap
 
-Create mbtiles
+# Create mbtiles
 docker run -it --rm \
   -v $(pwd)/tmp:/data \
   openftth/tippecanoe:latest \
