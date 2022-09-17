@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 docker build --no-cache -t openftth/go-http-file-server:v1.12.0 -t openftth/go-http-file-server .
 
 docker push openftth/go-http-file-server:v1.12.0

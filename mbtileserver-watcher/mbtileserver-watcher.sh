@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 FOLDER=$1
 LAST_RUN=$(date --date '-1 min')
 
