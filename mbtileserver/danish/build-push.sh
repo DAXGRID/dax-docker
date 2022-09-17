@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+# exit when any command fails
+set -e
+
+# keep track of the last executed command
+trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
+# echo an error message before exiting
+trap 'echo "\"${last_command}\" command filed with exit code $?."' EXIT
+
 kortforsyning_user=$1
 kortforsyning_password=$2
 
@@ -7,7 +15,7 @@ kortforsyning_password=$2
 mkdir -p ./tmp
 
 # Get Vejmidte
-wget ftp://$kortforsyning_user:$kortforsyning_password@ftp.kortforsyningen.dk//grundlaeggende_landkortdata/landsdaekkende-vejdata/Vejmidte-GPKG_UTM32-ETRS89.zip -O ./tmp/veje.zip
+wget ftp://$kortforsyning_user:$kortforsyning_password@ftp.dataforsyning.dk//grundlaeggende_landkortdata/landsdaekkende-vejdata/Vejmidte-GPKG_UTM32-ETRS89.zip -O ./tmp/veje.zip
 unzip -j "./tmp/veje.zip" "vejmidte_navn.gpkg" -d "./tmp/veje"
 ogr2ogr -f GeoJSON -sql "SELECT geometri, 'vejmidte' as objecttype, vejnavn FROM vejmidte_navn" -append -t_srs crs:84 ./tmp/danish-basemap.geojson ./tmp/veje/vejmidte_navn.gpkg -nln danish-basemap
 
