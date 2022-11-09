@@ -1,16 +1,16 @@
-FROM golang:1.16-alpine3.12
+FROM golang:1.19-alpine3.16
 
 WORKDIR /
 RUN apk add git build-base
 
-RUN git clone -b v1.12.0  https://github.com/mjpclab/go-http-file-server.git repo
+RUN git clone -b v1.15.5  https://github.com/mjpclab/go-http-file-server.git repo
 
 WORKDIR /repo
 
 RUN GO111MODULE=auto go build -o /ghfs src/main.go
 
 # Stage 2: start from a smaller image
-FROM alpine:3.12
+FROM alpine:3.16
 
 WORKDIR /
 
