@@ -17,6 +17,6 @@ WORKDIR /
 # copy the executable to the empty container
 COPY --from=0 /ghfs /ghfs
 
-# Set the command as the entrypoint, so that it captures any
-# command-line arguments passed in
-ENTRYPOINT ["/ghfs"]
+ENV GHFS_USERNAME GHFS_PASSWORD
+
+CMD exec /ghfs -l 8080 -L - --global-auth --user "${GHFS_USERNAME}:${GHFS_PASSWORD}" -r "/tmp" -U --global-delete --global-mkdir
