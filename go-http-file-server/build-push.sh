@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
-docker build --no-cache -t openftth/go-http-file-server:v1.15.5_v3 -t openftth/go-http-file-server .
+set -e
 
-docker push openftth/go-http-file-server:v1.15.5_v3
+TAG_VERSION="v1.15.5_v4"
+
+docker build --no-cache -t openftth/go-http-file-server:$TAG_VERSION -t openftth/go-http-file-server .
+
+docker push openftth/go-http-file-server:$TAG_VERSION
 docker push openftth/go-http-file-server:latest

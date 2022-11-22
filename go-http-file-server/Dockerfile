@@ -19,4 +19,4 @@ COPY --from=0 /ghfs /ghfs
 
 ENV GHFS_USERNAME GHFS_PASSWORD GHFS_ROOT_DIR GHFS_PORT
 
-ENTRYPOINT ["sh", "-c", "exec /ghfs -l $GHFS_PORT --global-auth --user ${GHFS_USERNAME}:${GHFS_PASSWORD} -r $GHFS_ROOT_DIR -U --global-delete --global-mkdir"]
+ENTRYPOINT ["sh", "-c", "exec /ghfs -l $GHFS_PORT --global-auth --user ${GHFS_USERNAME}:${GHFS_PASSWORD} -r $GHFS_ROOT_DIR -U --global-delete --global-mkdir -L -"]
