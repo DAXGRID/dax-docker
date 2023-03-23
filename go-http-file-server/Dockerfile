@@ -18,4 +18,4 @@ WORKDIR /
 # copy the executable to the empty container
 COPY --from=0 /ghfs /ghfs
 
-ENTRYPOINT ["/ghfs -l 8080"]
+ENTRYPOINT ["/ghfs"]
