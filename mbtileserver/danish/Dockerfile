@@ -22,7 +22,7 @@ RUN mkdir /lib64 && ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2
 COPY --from=0 /mbtileserver /mbtileserver
 
 # add tiles directory to image
-ADD tilesets /tilesets
+ADD data /data
 
 # Set the command as the entrypoint, so that it captures any
 # command-line arguments passed in

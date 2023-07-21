@@ -17,9 +17,9 @@ cp -rf ./env-openmaptiles ./tmp/openmaptiles/.env
 
 (cd ./tmp/openmaptiles && ./quickstart.sh denmark)
 
-# Create tilesets folder for tilesets and move tiles to it
-mkdir -p ./tilesets
-cp ./tmp/openmaptiles/data/tiles.mbtiles ./tilesets/osm.mbtiles
+# Create data folder for tilesets and move tiles to it.
+mkdir -p ./data
+cp ./tmp/openmaptiles/data/tiles.mbtiles ./data/osm.mbtiles
 
 # Remove tmp folder to decrease the image size.
 rm -rf ./tmp
