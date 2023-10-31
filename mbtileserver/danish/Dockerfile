@@ -1,17 +1,17 @@
 # Stage 1: compile mbtileserver
-FROM golang:1.20-alpine3.16
+FROM golang:1.21-alpine3.18
 
 WORKDIR /
 RUN apk add git build-base
 
-RUN git clone -b v0.9.0 https://github.com/consbio/mbtileserver.git repo
+RUN git clone -b v0.10.0 https://github.com/consbio/mbtileserver.git repo
 
 WORKDIR /repo
 
 RUN GOOS=linux go build -o /mbtileserver
 
 # Stage 2: start from a smaller image
-FROM alpine:3.16
+FROM alpine:3.17
 
 WORKDIR /
 
