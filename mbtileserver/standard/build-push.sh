@@ -2,7 +2,9 @@
 
 set -e
 
-docker build --no-cache -t openftth/mbtileserver:v0.9.0-v2 -t openftth/mbtileserver:latest .
+VERSION_TAG="v0.10.0"
 
-docker push openftth/mbtileserver:v0.9.0-v2
+docker build --no-cache -t openftth/mbtileserver:$VERSION_TAG -t openftth/mbtileserver:latest .
+
+docker push openftth/mbtileserver:$VERSION_TAG
 docker push openftth/mbtileserver:latest
