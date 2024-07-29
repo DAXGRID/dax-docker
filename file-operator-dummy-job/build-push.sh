@@ -3,7 +3,7 @@
 set -e
 
 IMAGE_NAME="file-operator-dummy-job"
-TAG_VERSION="v1.0.0"
+TAG_VERSION="v1.1.0"
 
 docker build --no-cache \
        . \
