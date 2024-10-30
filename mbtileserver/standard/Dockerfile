@@ -4,7 +4,7 @@ FROM golang:1.21-alpine3.18
 WORKDIR /
 RUN apk add git build-base
 
-RUN git clone -b v0.10.0 https://github.com/consbio/mbtileserver.git repo
+RUN git clone -b v0.11.0 https://github.com/consbio/mbtileserver.git repo
 
 WORKDIR /repo
 
