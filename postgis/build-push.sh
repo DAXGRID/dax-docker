@@ -2,7 +2,7 @@
 
 set -e
 
-VERSION_TAG="16-3.4"
+VERSION_TAG="17.2-3.5.2"
 
 docker build --no-cache \
        -t openftth/postgis:$VERSION_TAG \
