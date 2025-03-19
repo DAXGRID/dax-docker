@@ -2,7 +2,7 @@
 
 set -e
 
-VERSION_TAG="1.15.0-1"
+VERSION_TAG="1.15.0-1-1"
 IMAGE_NAME="daxgrid/pg_bouncer"
 
 docker build --no-cache \
