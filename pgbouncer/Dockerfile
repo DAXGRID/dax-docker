@@ -1,8 +1,8 @@
-FROM debian:bullseye
+FROM alpine:latest
 
-RUN apt update && apt install pgbouncer=1.15.0-1 -y
+RUN apk update && apk add pgbouncer=1.23.1-r0
 
-RUN groupadd -r pgbouncer && useradd -r -g pgbouncer pgbouncer
+RUN addgroup -S pgbouncer && adduser -S pgbouncer -G pgbouncer
 
 WORKDIR /home/pgbouncer
 
