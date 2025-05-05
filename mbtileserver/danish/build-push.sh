@@ -26,5 +26,5 @@ rm -rf ./tmp
 
 # Build docker image with timestamp and push it
 timestamp=$(date +%s)
-docker build -t openftth/mbtileserver:danish-$timestamp .
-docker push openftth/mbtileserver:danish-$timestamp
+docker build -t openftth/mbtileserver:danish-"$timestamp" .
+docker push openftth/mbtileserver:danish-"$timestamp"
