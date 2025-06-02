@@ -2,7 +2,7 @@
 
 set -e
 
-TAG_VERSION="v1.20.3"
+TAG_VERSION="v1.20.4"
 
 docker build --no-cache \
        -t openftth/go-http-file-server:$TAG_VERSION \
