@@ -1,10 +1,10 @@
-FROM golang:1.20-alpine3.16
+FROM golang:1.21-alpine
 
 WORKDIR /
 RUN apk add git build-base
 
 RUN git config --global advice.detachedHead false
-RUN git clone -b v1.20.4 https://github.com/mjpclab/go-http-file-server.git repo
+RUN git clone -b v1.21.1 https://github.com/mjpclab/go-http-file-server.git repo
 
 WORKDIR /repo
 
