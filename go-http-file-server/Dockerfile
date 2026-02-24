@@ -4,7 +4,7 @@ WORKDIR /
 RUN apk add git build-base
 
 RUN git config --global advice.detachedHead false
-RUN git clone -b v1.21.1 https://github.com/mjpclab/go-http-file-server.git repo
+RUN git clone -b v1.21.3 https://github.com/mjpclab/go-http-file-server.git repo
 
 WORKDIR /repo
 
