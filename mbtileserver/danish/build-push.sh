@@ -12,7 +12,7 @@ trap 'echo "\"${last_command}\" command filed with exit code $?."' EXIT
 mkdir -p ./tmp
 
 # Get openmaptiles to generate danish basemap
-git clone -b v3.12.2 https://github.com/openmaptiles/openmaptiles.git ./tmp/openmaptiles
+git clone https://github.com/openmaptiles/openmaptiles.git ./tmp/openmaptiles
 cp -rf ./env-openmaptiles ./tmp/openmaptiles/.env
 
 (cd ./tmp/openmaptiles && ./quickstart.sh denmark)
