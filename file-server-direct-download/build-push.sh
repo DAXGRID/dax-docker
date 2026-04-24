@@ -3,7 +3,7 @@
 set -e
 
 IMAGE_NAME="file-server-direct-download"
-TAG_VERSION="v0.1.0"
+TAG_VERSION="v0.2.0"
 
 docker build --no-cache \
        . \
