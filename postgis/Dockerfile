@@ -1,7 +1,7 @@
-FROM postgres:17.2-bullseye
+FROM postgres:18.4-bookworm
 
-ENV POSTGIS_MAJOR 3
-ENV POSTGIS_VERSION 3.5.2+dfsg-1.pgdg110+1
+ENV POSTGIS_MAJOR=3
+ENV POSTGIS_VERSION=3.6.3+dfsg-1.pgdg12+1
 
 RUN apt-get update \
       && apt-cache showpkg postgresql-$PG_MAJOR-postgis-$POSTGIS_MAJOR \
