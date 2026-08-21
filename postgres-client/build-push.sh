@@ -2,7 +2,7 @@
 
 set -e
 
-VERSION_TAG="16"
+VERSION_TAG="18"
 
 docker build --no-cache \
        -t openftth/postgres-client:$VERSION_TAG \
