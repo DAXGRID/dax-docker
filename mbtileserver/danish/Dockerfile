@@ -1,5 +1,5 @@
 # Stage 1: compile mbtileserver
-FROM golang
+FROM golang:alpine
 
 WORKDIR /
 RUN apk add git build-base
