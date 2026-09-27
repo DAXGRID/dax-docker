@@ -1,17 +1,17 @@
-FROM golang:1.21-alpine
+FROM golang:alpine
 
 WORKDIR /
 RUN apk add git build-base
 
 RUN git config --global advice.detachedHead false
-RUN git clone -b v1.21.3 https://github.com/mjpclab/go-http-file-server.git repo
+RUN git clone https://github.com/DAXGRID/go-http-file-server.git repo
 
 WORKDIR /repo
 
 RUN go build -o /ghfs
 
 # Stage 2: start from a smaller image
-FROM alpine:3.16
+FROM alpine
 
 WORKDIR /
 

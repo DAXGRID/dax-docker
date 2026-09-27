@@ -2,12 +2,12 @@
 
 set -e
 
-TAG_VERSION="v1.21.3"
+TAG_VERSION="v1.22.0"
 
 docker build --no-cache \
-       -t openftth/go-http-file-server:$TAG_VERSION \
-       -t openftth/go-http-file-server:latest \
+       -t daxgrid/go-http-file-server:$TAG_VERSION \
+       -t daxgrid/go-http-file-server:latest \
        .
 
-docker push openftth/go-http-file-server:$TAG_VERSION
-docker push openftth/go-http-file-server:latest
+docker push daxgrid/go-http-file-server:$TAG_VERSION
+docker push daxgrid/go-http-file-server:latest
