@@ -2,12 +2,12 @@
 
 set -e
 
-VERSION_TAG="18.4-3.6.3"
+VERSION_TAG="18.6-3.6.4"
 
 docker build --no-cache \
-       -t openftth/postgis:$VERSION_TAG \
-       -t openftth/postgis:latest \
+       -t daxgrid/postgis:$VERSION_TAG \
+       -t daxgrid/postgis:latest \
        .
 
-docker push openftth/postgis:$VERSION_TAG
-docker push openftth/postgis:latest
+docker push daxgrid/postgis:$VERSION_TAG
+docker push daxgrid/postgis:latest
