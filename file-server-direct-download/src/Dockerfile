@@ -1,7 +1,7 @@
-FROM debian
+FROM alpine
 
 ADD src/run.sh /
 
-RUN apt-get update && apt-get install -y jq curl
+RUN apk add --no-cache jq curl bash
 
 ENTRYPOINT ["/run.sh"]
