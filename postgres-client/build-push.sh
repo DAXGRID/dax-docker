@@ -5,9 +5,9 @@ set -e
 VERSION_TAG="18"
 
 docker build --no-cache \
-       -t openftth/postgres-client:$VERSION_TAG \
-       -t openftth/postgres-client:latest \
+       -t daxgrid/postgres-client:$VERSION_TAG \
+       -t daxgrid/postgres-client:latest \
        .
 
-docker push openftth/postgres-client:$VERSION_TAG
-docker push openftth/postgres-client:latest
+docker push daxgrid/postgres-client:$VERSION_TAG
+docker push daxgrid/postgres-client:latest
