@@ -26,5 +26,5 @@ rm -rf ./tmp
 
 # Build docker image with timestamp and push it
 timestamp=$(date +%s)
-docker build -t daxgrid/mbtileserver:danish-"$timestamp" .
+docker build --no-cache --pull -t daxgrid/mbtileserver:danish-"$timestamp" .
 docker push daxgrid/mbtileserver:danish-"$timestamp"

@@ -2,9 +2,9 @@
 
 set -e
 
-VERSION_TAG="v0.11.2"
+VERSION_TAG="v0.11.3"
 
-docker build --no-cache -t daxgrid/mbtileserver:$VERSION_TAG -t daxgrid/mbtileserver:latest .
+docker build --no-cache --pull -t daxgrid/mbtileserver:$VERSION_TAG -t daxgrid/mbtileserver:latest .
 
 docker push daxgrid/mbtileserver:$VERSION_TAG
 docker push daxgrid/mbtileserver:latest
