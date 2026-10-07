@@ -2,7 +2,7 @@
 
 set -e
 
-TAG_VERSION="v1.22.0"
+TAG_VERSION="v1.22.1"
 
 docker build --no-cache \
        -t daxgrid/go-http-file-server:$TAG_VERSION \
